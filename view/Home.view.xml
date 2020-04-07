@@ -2,7 +2,7 @@
           xmlns="sap.m" 
           xmlns:core="sap.ui.core" 
           height="100%" 
-          controllerName="rshub.ui.controller.Home">
+          controllerName="rshub.ui.view.Home">
 
     <Page title="Home View">
         <content>

@@ -22,8 +22,11 @@ sap.ui.define([
 		form1_onInit: function () {
             
 			//Setup for Form1 view
-            var oViewForm1 = VControl.viewCreate("form1",this.getView().getController()),
-                formContainer = this.getView().byId("form1");
+            var oViewForm1 = Fragment.load({name: Utils.nameSpaceHandler("view.forms.Form1"),
+                                           controller: Utils.nameSpaceHandler("view.forms.Form1"),
+                                           type:"XML"});
+
+            var formContainer = this.getView().byId("form1");
                             
             //Pull Geo Data from Socrata API
             var oStates = SoSQL.getStates();

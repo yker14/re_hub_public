@@ -1,83 +1,43 @@
 {   "initView": "registrar",
 
-    "panel": 
+    "navMenu": 
         [{
             "text": "Home",
-            "key": "home",
-            "action": "nav",
+            "key": "Homeview",
             "icon": "sap-icon://home",
-            "expanded": false,
-            "hasExpander": false,
-            "enabled": true 
+            "enabled": true, 
+            "newSection": false
         },
                  
         {
             "text": "Inmuebles",
             "key": "inmuebles",
-            "action": "expand",
             "icon": "sap-icon://building",
-            "expanded": false,
-            "hasExpander": true,
             "enabled": true,
+            "newSection": false,
             "items":
                 [{
                     "text": "Registrar Inmuebles",
-                    "key": "registrar",
+                    "key": "RegisterView",
+                    "icon": "sap-icon://write-new",
                     "enabled": true,
-                    "action": "nav"
+                    "newSection": false
                 },
-                
+                 
                 {
                     "text": "Buscar Inmuebles",
                     "key": "buscar",
-                    "action":"nav"
+                    "icon": "sap-icon://sys-find",
+                    "enabled": true,
+                    "newSection": false
                 }]
-        }],
-    
-    "action": 
-    {
-        "inmuebles": {
-            "action":"expand"
-        },
-                
-        "registrar": {
-            "action":"nav",
-            "viewName": "view.RegisterRS",
-            "controllerName": "view.RegisterRS",
-            "type": "XML"
-        },
-
-        "buscar": {
-            "action":"nav",
-            "viewName": "view.SearchRS",
-            "controllerName": "view.SearchRS",
-            "type": "XML"
         },
         
-         "home": {
-            "action":"nav",
-            "viewName": "view.Home",
-            "controllerName": "view.Home",
-            "type": "XML"
-        }
-    },
- 
-    "views": 
-    {
-        "form1": {
-                "viewtype": "fragment",
-                "id":"form1",
-                "viewName": "view.forms.Form1",
-                "controllerName": null,
-                "type": "XML"
-        },
-
-        "form2": {
-                "viewtype": "fragment",
-                "id":"form2",
-                "viewName": "view.forms.Form2",
-                "controllerName": null,
-                "type": "XML"
-        }
-    }
+        {
+            "text": "Soporte",
+            "key": "support",
+            "icon": "sap-icon://headset",
+            "enabled": true ,
+            "newSection": true
+        }]
 }

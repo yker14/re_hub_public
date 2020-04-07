@@ -30,6 +30,49 @@
 					"manifest.json"
 				]
 			}
-		}
+		},
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "rshub.ui.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "transition": "slide",
+                "async": true,
+                "bypassed": {
+                    "target": "notFound"
+                }
+            },
+            "routes": [{
+                "pattern": "",
+                "name": "Homeview",
+                "target": "home"
+                },
+                {
+                "pattern": "regs",
+                "name": "RegisterView",
+                "target": "register"
+                }
+            ],
+            
+            "targets": {
+                "home": {
+                   "viewId": "home",
+                   "viewName": "Home",
+                   "viewLevel" : 1
+                },
+                "register": {
+                   "viewId": "register",
+                   "viewName": "RegisterRS",
+                   "viewLevel" : 2
+                },
+                "notFound": {
+                   "viewId": "notFound",
+                   "viewName": "dialogs.NotFound",
+                   "transition": "show"
+                }
+            }
+        }
 	}
 }

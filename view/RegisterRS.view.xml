@@ -6,14 +6,15 @@
 	xmlns:personal="rshub.ui.view.blocks"
 	xmlns:employment="rshub.ui.view.blocks"
 	xmlns:blockcolor="rshub.ui.view.blocks"
-	controllerName="rshub.ui.view.RegisterRS">
+	controllerName="rshub.ui.view.RegisterRS"
+    height="100%">
     
     <Toolbar height="1.5rem">
         <ToolbarSpacer/>
         <Title text="Registro" />
         <ToolbarSpacer/>
     </Toolbar>
-
+    
 	<IconTabBar
 		id="idIconTabBarNoIcons"
 		class="sapUiResponsiveContentPadding"

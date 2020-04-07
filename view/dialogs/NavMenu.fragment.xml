@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+		<m:Menu	title="AppNav"
+                itemSelected=".onMenuItemSelect"
+                items="{path: '/navMenu'}">
+            
+			<m:MenuItem text="{text}"
+                        icon="{icon}"
+                        key="{key}"
+                        startsSection="{newSection}"
+                        visible="{enabled}"
+                        items="{items}">
+
+				<m:items>
+					<m:MenuItem text="{text}"
+                                icon="{icon}"
+                                key="{key}"
+                                startsSection="{newSection}"
+                                visible="{enabled}"/>
+                </m:items>
+			</m:MenuItem>
+		</m:Menu>
+</core:FragmentDefinition>
