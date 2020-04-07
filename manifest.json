@@ -1,0 +1,35 @@
+{
+	"sap.app": {
+		"id": "rshub.ui",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+            "id": "ShellBar",
+			"viewName": "rshub.ui.view.Shell",
+			"type": "XML",
+			"async": true
+		},
+		"dependencies": {
+			"libs": {
+				"sap.f": {},
+				"sap.m": {},
+				"sap.tnt": {}
+			}
+		},
+		"config": {
+			"sample": {
+				"stretch": true,
+				"files": [
+					"controller/Shell.controller.js",
+					"model/model.json",
+                    "model/RegisterForm.json",
+					"view/Shell.view.xml",
+					"manifest.json"
+				]
+			}
+		}
+	}
+}

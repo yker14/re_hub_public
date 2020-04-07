@@ -1,0 +1,65 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+	xmlns:ux="sap.uxap"
+    xmlns:tnt="sap.tnt"
+	xmlns:layout="sap.ui.layout"
+	xmlns="sap.m"
+	xmlns:personal="rshub.ui.view.blocks"
+	xmlns:employment="rshub.ui.view.blocks"
+	xmlns:blockcolor="rshub.ui.view.blocks"
+	controllerName="rshub.ui.view.RegisterRS">
+    
+    <Toolbar height="1.5rem">
+        <ToolbarSpacer/>
+        <Title text="Registro" />
+        <ToolbarSpacer/>
+    </Toolbar>
+
+	<IconTabBar
+		id="idIconTabBarNoIcons"
+		class="sapUiResponsiveContentPadding"
+        stretchContentHeight="true">
+		<items>
+			<IconTabFilter id="form1"
+                           text="Inmueble">
+
+                <!-- Form1 View Content-->
+                
+			</IconTabFilter>
+            
+            <IconTabSeparator icon="sap-icon://open-command-field" />
+			
+            <IconTabFilter id="form2"
+                           text="Consignador"
+                           enabled="false">
+                
+                <!-- Form2 View Content-->    
+				<Text text="Attachments go here ..." />
+                
+			</IconTabFilter>
+            
+            <IconTabSeparator icon="sap-icon://open-command-field" />
+			
+            <IconTabFilter id="form3"
+                           text="Condiciones"
+                           enabled="false">
+                
+                <!-- Form3 View Content-->
+				<Text text="Notes go here ..." />
+                
+			</IconTabFilter>
+            
+            <IconTabSeparator icon="sap-icon://open-command-field" />
+
+            <IconTabFilter id="otrosform"
+                           text="Otros"
+                           enabled="false">
+                
+                <!-- Otros View Content-->
+				<Text text="People content goes here ..." />
+                
+			</IconTabFilter>
+            
+		</items>
+	</IconTabBar>
+    
+</mvc:View>

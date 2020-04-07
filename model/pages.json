@@ -1,0 +1,83 @@
+{   "initView": "registrar",
+
+    "panel": 
+        [{
+            "text": "Home",
+            "key": "home",
+            "action": "nav",
+            "icon": "sap-icon://home",
+            "expanded": false,
+            "hasExpander": false,
+            "enabled": true 
+        },
+                 
+        {
+            "text": "Inmuebles",
+            "key": "inmuebles",
+            "action": "expand",
+            "icon": "sap-icon://building",
+            "expanded": false,
+            "hasExpander": true,
+            "enabled": true,
+            "items":
+                [{
+                    "text": "Registrar Inmuebles",
+                    "key": "registrar",
+                    "enabled": true,
+                    "action": "nav"
+                },
+                
+                {
+                    "text": "Buscar Inmuebles",
+                    "key": "buscar",
+                    "action":"nav"
+                }]
+        }],
+    
+    "action": 
+    {
+        "inmuebles": {
+            "action":"expand"
+        },
+                
+        "registrar": {
+            "action":"nav",
+            "viewName": "view.RegisterRS",
+            "controllerName": "view.RegisterRS",
+            "type": "XML"
+        },
+
+        "buscar": {
+            "action":"nav",
+            "viewName": "view.SearchRS",
+            "controllerName": "view.SearchRS",
+            "type": "XML"
+        },
+        
+         "home": {
+            "action":"nav",
+            "viewName": "view.Home",
+            "controllerName": "view.Home",
+            "type": "XML"
+        }
+    },
+ 
+    "views": 
+    {
+        "form1": {
+                "viewtype": "fragment",
+                "id":"form1",
+                "viewName": "view.forms.Form1",
+                "controllerName": null,
+                "type": "XML"
+        },
+
+        "form2": {
+                "viewtype": "fragment",
+                "id":"form2",
+                "viewName": "view.forms.Form2",
+                "controllerName": null,
+                "type": "XML"
+        }
+    }
+}
