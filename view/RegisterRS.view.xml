@@ -1,66 +1,187 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
-	xmlns:ux="sap.uxap"
-    xmlns:tnt="sap.tnt"
-	xmlns:layout="sap.ui.layout"
-	xmlns="sap.m"
-	xmlns:personal="rshub.ui.view.blocks"
-	xmlns:employment="rshub.ui.view.blocks"
-	xmlns:blockcolor="rshub.ui.view.blocks"
-	controllerName="rshub.ui.view.RegisterRS"
-    height="100%">
-    
-    <Toolbar height="1.5rem">
-        <ToolbarSpacer/>
-        <Title text="Registro" />
-        <ToolbarSpacer/>
-    </Toolbar>
-    
-	<IconTabBar
-		id="idIconTabBarNoIcons"
-		class="sapUiResponsiveContentPadding"
-        stretchContentHeight="true">
-		<items>
-			<IconTabFilter id="form1"
-                           text="Inmueble">
+<mvc:View	xmlns:mvc="sap.ui.core.mvc"
+		  		xmlns="sap.m"
+          xmlns:f="sap.ui.layout.form"
+          xmlns:l="sap.ui.layout"
+		  		xmlns:core="sap.ui.core" 
+	        height="100%">
 
-                <!-- Form1 View Content-->
-                
-			</IconTabFilter>
-            
-            <IconTabSeparator icon="sap-icon://open-command-field" />
-			
-            <IconTabFilter id="form2"
-                           text="Consignador"
-                           enabled="false">
-                
-                <!-- Form2 View Content-->    
-				<Text text="Attachments go here ..." />
-                
-			</IconTabFilter>
-            
-            <IconTabSeparator icon="sap-icon://open-command-field" />
-			
-            <IconTabFilter id="form3"
-                           text="Condiciones"
-                           enabled="false">
-                
-                <!-- Form3 View Content-->
-				<Text text="Notes go here ..." />
-                
-			</IconTabFilter>
-            
-            <IconTabSeparator icon="sap-icon://open-command-field" />
+		<VBox class="sapUiSmallMargin"
+	        height="100%">
 
-            <IconTabFilter id="otrosform"
-                           text="Otros"
-                           enabled="false">
-                
-                <!-- Otros View Content-->
-				<Text text="People content goes here ..." />
-                
-			</IconTabFilter>
-            
-		</items>
-	</IconTabBar>
-    
+			<f:SimpleForm id="form1"
+				editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanXL="4"
+				labelSpanL="4"
+				labelSpanM="4"
+				labelSpanS="12"
+				adjustLabelSpan="false"
+				emptySpanXL="0"
+				emptySpanL="0"
+				emptySpanM="0"
+				emptySpanS="0"
+				columnsXL="3"
+				columnsL="2"
+				columnsM="2"
+				singleContainerFullSize="false" >
+				<f:content>
+					<core:Title text="Ubicacion" />
+
+	                    <Label text="Nombre Direccion" />
+	                    <Input id="addressname"
+	                           placeholder="CC Unicentro o Residencias Lago" />
+
+	                    <Label text="Direccion" />
+	                    <Input id="address"
+	                           placeholder="Calle 80 #10A-22 Apt 405" />
+
+	                    <Label text="Departamento" />
+	                    <Select id="state">
+	                        <items>
+	                            <core:Item text="Cundinamarca" key="CN"/>
+	                            <core:Item text="Bogota DC" key="BGT"/>
+	                            <core:Item text="Cali" key="CLI"/>
+	                        </items>
+	                    </Select>
+
+	                    <Label text="Codigo Postal/Ciudad" />
+	                    <Input placeholder="110111" type="Number">
+	                        <layoutData>
+	                            <l:GridData span="XL2 L3 M3 S4" />
+	                        </layoutData>
+	                    </Input>
+	                    <Select id="city" >
+	                        <items>
+	                            <core:Item text="Bogota" key="1"/>
+	                            <core:Item text="Chia" key="2"/>
+	                            <core:Item text="Soacha" key="3"/>
+	                        </items>
+	                    </Select>
+
+	                		<Label text="Estrato" />
+											<Select id="stratum">
+						<items>
+							<core:Item text="1" key="1"/>
+							<core:Item text="2" key="2"/>
+							<core:Item text="3" key="3"/>
+	            <core:Item text="Rural" key="7"/>
+						</items>
+					</Select>
+
+					<core:Title text="Caracteristicas" />
+
+	                    <Label text="Tipo de Inmueble" />
+	                    <Select id="rstype">
+	                        <items>
+	                            <core:Item text="Casa" key="CS" />
+	                            <core:Item text="Apartamento" key="OF" />
+	                            <core:Item text="Oficina" key="BOD" />
+	                        </items>
+	                    </Select>
+
+	                    <Label text="Metros Totales" />
+	                    <Input type="Number" />
+
+	                    <Label text="Metros Construidos" />
+	                    <Input type="Number"/>
+
+	                    <Label text="Antiguedad" />
+	                    <Select id="rsage">
+	                        <items>
+	                            <core:Item text="1 año" key="1" />
+	                            <core:Item text="2 años" key="2" />
+	                            <core:Item text="3 años" key="3" />
+	                        </items>
+	                    </Select>
+
+	                    <Label text="Baños" />
+	                    <Select id="bath">
+	                        <items>
+	                            <core:Item text="1" key="1" />
+	                            <core:Item text="2" key="2" />
+	                            <core:Item text="10 o mas" key="10" />
+	                        </items>
+	                    </Select>
+
+	                <core:Title />
+
+	                    <Label text="Habitaciones" />
+	                    <Select id="rooms">
+	                        <items>
+	                            <core:Item text="1" key="1" />
+	                            <core:Item text="2" key="2" />
+	                            <core:Item text="10 o mas" key="10" />
+	                        </items>
+	                    </Select>
+
+	                    <Label text="Pisos" />
+	                    <Select id="floors">
+	                        <items>
+	                            <core:Item text="1" key="1" />
+	                            <core:Item text="2" key="2" />
+	                            <core:Item text="30 o mas" key="30" />
+	                        </items>
+	                    </Select>
+
+				</f:content>
+			</f:SimpleForm>
+
+	        <f:SimpleForm id="form2"
+				editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanXL="4"
+				labelSpanL="4"
+				labelSpanM="4"
+				labelSpanS="12"
+				adjustLabelSpan="false"
+				emptySpanXL="0"
+				emptySpanL="0"
+				emptySpanM="0"
+				emptySpanS="0"
+				columnsXL="3"
+				columnsL="2"
+				columnsM="2"
+				singleContainerFullSize="false">
+	            <f:content>
+
+	                <core:Title text="Comodidades"/>
+	                    <CheckBox id="visitparkcheckbox"  text="Parq. Visitante" select=".onSelect"/>
+					    <CheckBox id="terracebox" text="Terraza"/>
+					    <CheckBox id="gymbox" text="Gimnasio" />
+
+	            </f:content>
+	        </f:SimpleForm>
+
+	        <f:SimpleForm id="form3"
+												editable="true"
+												layout="ResponsiveGridLayout"
+												labelSpanXL="4"
+												labelSpanL="4"
+												labelSpanM="4"
+												labelSpanS="12"
+												adjustLabelSpan="false"
+												emptySpanXL="0"
+												emptySpanL="0"
+												emptySpanM="0"
+												emptySpanS="0"
+												columnsXL="3"
+												columnsL="2"
+												columnsM="2"
+												singleContainerFullSize="false" >
+
+	            <f:content>
+	                <core:Title text="Datos Extra"/>
+
+	                    <Label text="Parqueaderos de Visitante" />
+	                    <Select id="visitparksel" >
+	                        <items>
+	                            <core:Item text="1" key="1" />
+	                            <core:Item text="2" key="2" />
+	                            <core:Item text="30 o mas" key="30" />
+	                        </items>
+	                    </Select>
+
+	            </f:content>
+	        </f:SimpleForm>
+		   </VBox>
 </mvc:View>

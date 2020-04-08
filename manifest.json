@@ -36,8 +36,8 @@
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
                 "viewPath": "rshub.ui.view",
-                "controlId": "app",
-                "controlAggregation": "pages",
+                "controlId": "mainCont",
+                "controlAggregation": "content",
                 "transition": "slide",
                 "async": true,
                 "bypassed": {
@@ -55,7 +55,7 @@
                 "target": "register"
                 }
             ],
-            
+
             "targets": {
                 "home": {
                    "viewId": "home",
