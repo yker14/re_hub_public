@@ -76,7 +76,8 @@
                             horizontal="false"
                             vertical="true"
                             height="100%">
-
+					<content>
+					</content>
           </ScrollContainer>
 
 		</tnt:mainContents>

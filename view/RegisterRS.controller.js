@@ -2,56 +2,55 @@ sap.ui.define([
 	'sap/ui/model/json/JSONModel',
 	'sap/ui/core/mvc/Controller',
 	'sap/m/MessageToast',
-    '../libs/custom/Utilities',
-    'sap/ui/core/Fragment',
-    '../libs/custom/ViewsController',
-    '../libs/api/SoSQLAPI'
-], function (JSONModel, Controller, MessageToast, Utils, Fragment, VControl, SoSQL) {
+  '../libs/custom/Utilities',
+  'sap/ui/core/Fragment',
+  '../libs/api/SoSQLAPI'
+], function (JSONModel, Controller, MessageToast, Utils, Fragment, SoSQL) {
 	"use strict";
 
-	return Controller.extend(Utils.nameSpaceHandler("controller.RegisterRS"), {
-		
-        onInit: function () {
-            
-            this.oModel= {};
-            
-            // Setup of inital fragment on views for Icon Tab filters            
-            this.form1_onInit();
+	var CController = Controller.extend(Utils.nameSpaceHandler("controller.RegisterRS"), {
+
+    onInit: function () {
+						//Get Geo Information
+						var states = SoSQL.getStates();
+
+						states.then(function(data){
+
+								var nData = {"states":data};
+
+								//Set Json Model for the view
+								var json = new JSONModel();
+								json.setJSON(JSON.stringify(nData))
+
+								var stateList = this.getView().byId("state");
+
+								stateList.setModel(json);
+								stateList.addItem(new sap.ui.core.Item({key:"0",
+																												text:""}));
+						}.bind(this));
+
+						this.getView().byId("state").setSelectedKey("0");
 		},
-      
-		form1_onInit: function () {
-            
-			//Setup for Form1 view
-            var oViewForm1 = Fragment.load({name: Utils.nameSpaceHandler("view.forms.Form1"),
-                                           controller: Utils.nameSpaceHandler("view.forms.Form1"),
-                                           type:"XML"});
 
-            var formContainer = this.getView().byId("form1");
-                            
-            //Pull Geo Data from Socrata API
-            var oStates = SoSQL.getStates();
-            
-            //Once all promises are solved, do this
-            Promise.all([oStates,oViewForm1])
-                .then(
-                    function(values) {
-                        
-                        var oModel = values[0],
-                            oView = values[1];
-                        
-                        //Set Json Model for the view
-                        var json = new JSONModel();
-                        json.setJSON(JSON.stringify(oModel))
-                        
-                        oView.setModel(json);
-                        
-                        //Add to current page content
-                        formContainer.addContent(oView);
-            })
-        },            
+		onStateChange: function (ev) {
 
-		handleLink2Press: function () {
-			MessageToast.show("Page 2 long link clicked");
+			var key = ev.getSource().getSelectedKey(),
+					cities = SoSQL.getCities(key);
+
+					cities.then(function(data){
+
+					var nData = {"cities":data};
+
+					//Set Json Model for the view
+					var json = new JSONModel();
+					json.setJSON(JSON.stringify(nData))
+
+					this.getView().byId("cities").setModel(json);
+			}.bind(this));
+
 		}
 	});
-}, true);
+
+	return CController;
+
+});

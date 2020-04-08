@@ -2,7 +2,8 @@
 		  		xmlns="sap.m"
           xmlns:f="sap.ui.layout.form"
           xmlns:l="sap.ui.layout"
-		  		xmlns:core="sap.ui.core" 
+		  		xmlns:core="sap.ui.core"
+          controllerName="rshub.ui.view.RegisterRS"
 	        height="100%">
 
 		<VBox class="sapUiSmallMargin"
@@ -36,11 +37,12 @@
 	                           placeholder="Calle 80 #10A-22 Apt 405" />
 
 	                    <Label text="Departamento" />
-	                    <Select id="state">
+	                    <Select id="state"
+															items="{/states}"
+															
+															change="onStateChange">
 	                        <items>
-	                            <core:Item text="Cundinamarca" key="CN"/>
-	                            <core:Item text="Bogota DC" key="BGT"/>
-	                            <core:Item text="Cali" key="CLI"/>
+	                            <core:Item text="{state}" key="{id}"/>
 	                        </items>
 	                    </Select>
 
@@ -50,11 +52,10 @@
 	                            <l:GridData span="XL2 L3 M3 S4" />
 	                        </layoutData>
 	                    </Input>
-	                    <Select id="city" >
+	                    <Select id="cities"
+												 			items="{/cities}">
 	                        <items>
-	                            <core:Item text="Bogota" key="1"/>
-	                            <core:Item text="Chia" key="2"/>
-	                            <core:Item text="Soacha" key="3"/>
+	                            <core:Item text="{city}" key="{id}"/>
 	                        </items>
 	                    </Select>
 

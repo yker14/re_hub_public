@@ -15,7 +15,7 @@ sap.ui.define([
 
 	var CController = Controller.extend(Utils.nameSpaceHandler("controller.Shell"), {
 
-        onInit : function () {
+    onInit : function () {
 
             //Global variables for Controller
             this.addedPages = {};
@@ -42,56 +42,34 @@ sap.ui.define([
 			}
 		},
 
-        /*
-        handleMenuPress: function(oEvent) {
-			var oButton = oEvent.getSource();
-
-			// create menu only once
-			if (!this._menu) {
-				Fragment.load({
-					name: Utils.nameSpaceHandler("view.dialogs.NavMenu"),
-                    controller: this,
-                    id: "navmenu"
-				}).then(function(oMenu){
-					this._menu = oMenu;
-					this.getView().addDependent(this._menu);
-                    this._menu.setModel(this.oModel);
-					this._menu.openBy(oButton, false);
-				}.bind(this));
-			} else {
-				this._menu.openBy(oButton, false);
-			}
-		},
-        */
-
-        onMenuItemSelect : function(ev) {
-
-            this.getRouter().navTo(ev.getParameter("item").getProperty("key"))
+    onMenuItemSelect : function(ev) {
+						this.byId("mainCont").removeAllContent();
+            this.getRouter().navTo(ev.getParameter("item").getProperty("key"));
 
             console.log('NavMenu Dialog Item Selected');
 		},
 
-        handleNamePress: function (event) {
-			var oPopover = new Popover({
-				showHeader: false,
-				placement: Library.PlacementType.Bottom,
-				content: [
-					new Button({
-						text: 'Feedback',
-						type: Library.ButtonType.Transparent
-					}),
-					new Button({
-						text: 'Help',
-						type: Library.ButtonType.Transparent
-					}),
-					new Button({
-						text: 'Logout',
-						type: Library.ButtonType.Transparent
-					})
-				]
-			}).addStyleClass('sapMOTAPopover sapTntToolHeaderPopover');
+    handleNamePress: function (event) {
+					var oPopover = new Popover({
+						showHeader: false,
+						placement: Library.PlacementType.Bottom,
+						content: [
+							new Button({
+								text: 'Feedback',
+								type: Library.ButtonType.Transparent
+							}),
+							new Button({
+								text: 'Help',
+								type: Library.ButtonType.Transparent
+							}),
+							new Button({
+								text: 'Logout',
+								type: Library.ButtonType.Transparent
+							})
+						]
+					}).addStyleClass('sapMOTAPopover sapTntToolHeaderPopover');
 
-			oPopover.openBy(event.getSource());
+					oPopover.openBy(event.getSource());
 		},
 
 		onSideNavButtonPress: function () {

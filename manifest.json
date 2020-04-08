@@ -25,7 +25,7 @@
 				"files": [
 					"controller/Shell.controller.js",
 					"model/model.json",
-                    "model/RegisterForm.json",
+          "model/RegisterForm.json",
 					"view/Shell.view.xml",
 					"manifest.json"
 				]
