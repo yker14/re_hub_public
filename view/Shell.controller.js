@@ -16,13 +16,10 @@ sap.ui.define([
 	var CController = Controller.extend(Utils.nameSpaceHandler("controller.Shell"), {
 
     onInit : function () {
-
-            //Global variables for Controller
-            this.addedPages = {};
-
-            this.oModel = new JSONModel();
-						this.oModel.loadData(sap.ui.require.toUrl("rshub/ui/model/") + "/pages.json", null, false);
-            this.getView().setModel(this.oModel);
+	    //Global variables for Controller
+	    this.oModel = new JSONModel();
+			this.oModel.loadData(sap.ui.require.toUrl("rshub/ui/model/") + "/pages.json", null, false);
+	    this.getView().setModel(this.oModel);
 		},
 
     getRouter : function () {

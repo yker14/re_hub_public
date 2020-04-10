@@ -6,183 +6,163 @@
           controllerName="rshub.ui.view.RegisterRS"
 	        height="100%">
 
-		<VBox class="sapUiSmallMargin"
-	        height="100%">
+<VBox class="sapUiSmallMargin"
+      height="100%">
 
-			<f:SimpleForm id="form1"
-				editable="true"
-				layout="ResponsiveGridLayout"
-				labelSpanXL="4"
-				labelSpanL="4"
-				labelSpanM="4"
-				labelSpanS="12"
-				adjustLabelSpan="false"
-				emptySpanXL="0"
-				emptySpanL="0"
-				emptySpanM="0"
-				emptySpanS="0"
-				columnsXL="3"
-				columnsL="2"
-				columnsM="2"
-				singleContainerFullSize="false" >
-				<f:content>
-					<core:Title text="Ubicacion" />
+	<f:SimpleForm id="form1"
+								editable="true"
+								layout="ResponsiveGridLayout"
+								labelSpanXL="4"
+								labelSpanL="4"
+								labelSpanM="4"
+								labelSpanS="12"
+								adjustLabelSpan="false"
+								emptySpanXL="0"
+								emptySpanL="0"
+								emptySpanM="0"
+								emptySpanS="0"
+								columnsXL="3"
+								columnsL="2"
+								columnsM="2"
+								singleContainerFullSize="false" >
+		<f:content>
+			<core:Title text="Ubicacion" />
 
-	                    <Label text="Nombre Direccion" />
-	                    <Input id="addressname"
-	                           placeholder="CC Unicentro o Residencias Lago" />
+        <Label text="Nombre Direccion" />
+        <Input id="addressname"
+               placeholder="CC Unicentro o Residencias Lago" />
 
-	                    <Label text="Direccion" />
-	                    <Input id="address"
-	                           placeholder="Calle 80 #10A-22 Apt 405" />
+        <Label text="Direccion" />
+        <Input id="address"
+               placeholder="Calle 80 #10A-22 Apt 405" />
 
-	                    <Label text="Departamento" />
-	                    <Select id="state"
-															items="{/states}"
-															
-															change="onStateChange">
-	                        <items>
-	                            <core:Item text="{state}" key="{id}"/>
-	                        </items>
-	                    </Select>
+        <Label text="Departamento" />
+        <Select id="state"
+								items="{/states}"
+								change="onStateChange">
+          <items>
+              <core:Item text="{state}" key="{id}"/>
+          </items>
+        </Select>
 
-	                    <Label text="Codigo Postal/Ciudad" />
-	                    <Input placeholder="110111" type="Number">
-	                        <layoutData>
-	                            <l:GridData span="XL2 L3 M3 S4" />
-	                        </layoutData>
-	                    </Input>
-	                    <Select id="cities"
-												 			items="{/cities}">
-	                        <items>
-	                            <core:Item text="{city}" key="{id}"/>
-	                        </items>
-	                    </Select>
+        <Label text="Codigo Postal/Ciudad" />
+        <Input id="zipcode" placeholder="110111" type="Number">
+          <layoutData>
+              <l:GridData span="XL2 L3 M3 S4" />
+          </layoutData>
+        </Input>
+        <Select id="cities"
+					 			items="{/cities}">
+          <items>
+              <core:Item text="{city}" key="{id}"/>
+          </items>
+        </Select>
 
-	                		<Label text="Estrato" />
-											<Select id="stratum">
-						<items>
-							<core:Item text="1" key="1"/>
-							<core:Item text="2" key="2"/>
-							<core:Item text="3" key="3"/>
-	            <core:Item text="Rural" key="7"/>
-						</items>
-					</Select>
+    		<Label text="Estrato" />
+				<Select id="stratum"
+								items="{/stratum}">
+					<items>
+						<core:Item text="{value}" key="{id}"/>
+					</items>
+				</Select>
 
-					<core:Title text="Caracteristicas" />
+			<core:Title text="Caracteristicas" />
 
-	                    <Label text="Tipo de Inmueble" />
-	                    <Select id="rstype">
-	                        <items>
-	                            <core:Item text="Casa" key="CS" />
-	                            <core:Item text="Apartamento" key="OF" />
-	                            <core:Item text="Oficina" key="BOD" />
-	                        </items>
-	                    </Select>
+        <Label text="Tipo de Inmueble" />
+        <Select id="proptype"
+								items="{/rstype}">
+            <items>
+                <core:Item text="{value}" key="{id}" />
+            </items>
+        </Select>
 
-	                    <Label text="Metros Totales" />
-	                    <Input type="Number" />
+        <Label text="Antiguedad (Año)" />
+        <Select id="propage"
+								items="{/yearsince}">
+          <items>
+              <core:Item text="{value}" key="{id}" />
+          </items>
+        </Select>
 
-	                    <Label text="Metros Construidos" />
-	                    <Input type="Number"/>
+        <Label text="Baños" />
+        <Input id="bath" type="Number" />
 
-	                    <Label text="Antiguedad" />
-	                    <Select id="rsage">
-	                        <items>
-	                            <core:Item text="1 año" key="1" />
-	                            <core:Item text="2 años" key="2" />
-	                            <core:Item text="3 años" key="3" />
-	                        </items>
-	                    </Select>
+				<Label text="Habitaciones" />
+				<Input id="rooms" type="Number" />
 
-	                    <Label text="Baños" />
-	                    <Select id="bath">
-	                        <items>
-	                            <core:Item text="1" key="1" />
-	                            <core:Item text="2" key="2" />
-	                            <core:Item text="10 o mas" key="10" />
-	                        </items>
-	                    </Select>
+				<Label text="Pisos" />
+				<Input id="floors" type="Number" />
 
-	                <core:Title />
+		   <core:Title />
 
-	                    <Label text="Habitaciones" />
-	                    <Select id="rooms">
-	                        <items>
-	                            <core:Item text="1" key="1" />
-	                            <core:Item text="2" key="2" />
-	                            <core:Item text="10 o mas" key="10" />
-	                        </items>
-	                    </Select>
+        <Label text="Metros Totales" />
+        <Input id="totalsqmeter" type="Number" description="M2"/>
 
-	                    <Label text="Pisos" />
-	                    <Select id="floors">
-	                        <items>
-	                            <core:Item text="1" key="1" />
-	                            <core:Item text="2" key="2" />
-	                            <core:Item text="30 o mas" key="30" />
-	                        </items>
-	                    </Select>
+        <Label text="Metros Construidos" />
+        <Input id="constsqmeter" type="Number" description="M2"/>
 
-				</f:content>
-			</f:SimpleForm>
+		</f:content>
+	</f:SimpleForm>
 
-	        <f:SimpleForm id="form2"
-				editable="true"
-				layout="ResponsiveGridLayout"
-				labelSpanXL="4"
-				labelSpanL="4"
-				labelSpanM="4"
-				labelSpanS="12"
-				adjustLabelSpan="false"
-				emptySpanXL="0"
-				emptySpanL="0"
-				emptySpanM="0"
-				emptySpanS="0"
-				columnsXL="3"
-				columnsL="2"
-				columnsM="2"
-				singleContainerFullSize="false">
-	            <f:content>
+	<f:SimpleForm id="form2"
+								editable="true"
+								layout="ResponsiveGridLayout"
+								labelSpanXL="1"
+								labelSpanL="1"
+								labelSpanM="1"
+								labelSpanS="12"
+								adjustLabelSpan="false"
+								emptySpanXL="0"
+								emptySpanL="0"
+								emptySpanM="0"
+								emptySpanS="0"
+								columnsXL="1"
+								columnsL="1"
+								columnsM="1"
+								singleContainerFullSize="false">
+		<f:content>
 
-	                <core:Title text="Comodidades"/>
-	                    <CheckBox id="visitparkcheckbox"  text="Parq. Visitante" select=".onSelect"/>
-					    <CheckBox id="terracebox" text="Terraza"/>
-					    <CheckBox id="gymbox" text="Gimnasio" />
+			<core:Title text="Comodidades"/>
+	      <CheckBox id="visitparkcheckbox"  text="Parqueadero Visitante" select=".onSelect"/>
+		    <CheckBox id="terracebox" text="Terraza"/>
+		    <CheckBox id="gymbox" text="Gimnasio" />
+				<CheckBox id="securitybox" text="Seguridad Privada" />
 
-	            </f:content>
-	        </f:SimpleForm>
 
-	        <f:SimpleForm id="form3"
-												editable="true"
-												layout="ResponsiveGridLayout"
-												labelSpanXL="4"
-												labelSpanL="4"
-												labelSpanM="4"
-												labelSpanS="12"
-												adjustLabelSpan="false"
-												emptySpanXL="0"
-												emptySpanL="0"
-												emptySpanM="0"
-												emptySpanS="0"
-												columnsXL="3"
-												columnsL="2"
-												columnsM="2"
-												singleContainerFullSize="false" >
 
-	            <f:content>
-	                <core:Title text="Datos Extra"/>
+	   </f:content>
+	</f:SimpleForm>
 
-	                    <Label text="Parqueaderos de Visitante" />
-	                    <Select id="visitparksel" >
-	                        <items>
-	                            <core:Item text="1" key="1" />
-	                            <core:Item text="2" key="2" />
-	                            <core:Item text="30 o mas" key="30" />
-	                        </items>
-	                    </Select>
+  <f:SimpleForm id="form3"
+								editable="true"
+								layout="ResponsiveGridLayout"
+								labelSpanXL="4"
+								labelSpanL="4"
+								labelSpanM="4"
+								labelSpanS="12"
+								adjustLabelSpan="false"
+								emptySpanXL="0"
+								emptySpanL="0"
+								emptySpanM="0"
+								emptySpanS="0"
+								columnsXL="3"
+								columnsL="2"
+								columnsM="2"
+								singleContainerFullSize="false" >
 
-	            </f:content>
-	        </f:SimpleForm>
-		   </VBox>
+    <f:content>
+    	<core:Title text="Datos Extra"/>
+
+	      <Label text="Parqueaderos de Visitante" />
+	      <Select id="visitparksel" >
+	          <items>
+	              <core:Item text="1" key="1" />
+	              <core:Item text="2" key="2" />
+	              <core:Item text="30 o mas" key="30" />
+	          </items>
+	      </Select>
+
+    </f:content>
+	 </f:SimpleForm>
+	</VBox>
 </mvc:View>
