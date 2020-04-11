@@ -164,5 +164,6 @@
 
     </f:content>
 	 </f:SimpleForm>
+	 <Button id="saveButton" text="Guardar" press="onSaveData" />
 	</VBox>
 </mvc:View>

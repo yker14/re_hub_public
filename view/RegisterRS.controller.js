@@ -77,7 +77,43 @@ sap.ui.define([
 
 					citiesList.setModel(json);
 				}.bind(this));
+			},
+
+		onSaveData: function(ev) {
+			var formElements = this.getView().getModel().getProperty("/idinventory");
+
+			for (var i=0; i<formElements.length; i++) {
+				console.log(formElements[i]);
+
+				oElement = this.getView().byId(formElements[i].id);
+
+
+
+
+
+			},
+
+			getFormElementValue: function(element, type) {
+
+				switch (type) {
+					case "checkbox":
+						break;
+
+					case "select":
+						break;
+
+					case "input":
+						break;
+
+					case "textbox":
+						break;
+
+					default:
+						return null
+				}
 			}
+
+		}
 	});
 
 	return CController;
