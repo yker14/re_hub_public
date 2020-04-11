@@ -86,14 +86,14 @@ sap.ui.define([
 				console.log(formElements[i]);
 
 				oElement = this.getView().byId(formElements[i].id);
-
+			}
 
 
 
 
 			},
 
-			getFormElementValue: function(element, type) {
+		getFormElementValue: function(element, type) {
 
 				switch (type) {
 					case "checkbox":
@@ -112,8 +112,6 @@ sap.ui.define([
 						return null
 				}
 			}
-
-		}
 	});
 
 	return CController;
