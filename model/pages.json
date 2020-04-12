@@ -1,38 +1,32 @@
 {   "initView": "registrar",
 
-    "navMenu": 
+    "navMenu":
         [{
             "text": "Home",
             "key": "Homeview",
             "icon": "sap-icon://home",
-            "enabled": true, 
+            "enabled": true,
             "newSection": false
         },
-                 
+
         {
-            "text": "Inmuebles",
-            "key": "inmuebles",
+            "text": "Buscar Inmuebles",
+            "key": "buscar",
             "icon": "sap-icon://building",
             "enabled": true,
-            "newSection": false,
-            "items":
-                [{
-                    "text": "Registrar Inmuebles",
-                    "key": "RegisterView",
-                    "icon": "sap-icon://write-new",
-                    "enabled": true,
-                    "newSection": false
-                },
-                 
-                {
-                    "text": "Buscar Inmuebles",
-                    "key": "buscar",
-                    "icon": "sap-icon://sys-find",
-                    "enabled": true,
-                    "newSection": false
-                }]
+            "newSection": false
+
         },
+
+        {
+            "text": "Registrar Inmuebles",
+            "key": "RegisterView",
+            "icon": "sap-icon://insurance-house",
+            "enabled": true,
+            "newSection": false
+        }],
         
+    "fixedMenu" :[
         {
             "text": "Soporte",
             "key": "support",

@@ -6,8 +6,10 @@
           controllerName="rshub.ui.view.RegisterRS"
 	        height="100%">
 
-<VBox class="sapUiSmallMargin"
-      height="100%">
+<Page showHeader="false"
+			enableScrolling="true">
+<content>
+<VBox class="sapUiSmallMargin">
 
 	<f:SimpleForm id="form1"
 								editable="true"
@@ -164,6 +166,21 @@
 
     </f:content>
 	 </f:SimpleForm>
-	 <Button id="saveButton" text="Guardar" press="onSaveData" />
+
 	</VBox>
+
+</content>
+<footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer/>
+				<Button id="saveButton" text="Guardar" type="Accept" press="onSaveData" >
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+				<Button id="cleanButton" type="Reject" text="Descartar" press="onCleanData">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+				<ToolbarSpacer/>
+			</OverflowToolbar>
+</footer>
+</Page>
 </mvc:View>

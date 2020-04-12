@@ -80,38 +80,53 @@ sap.ui.define([
 			},
 
 		onSaveData: function(ev) {
-			var formElements = this.getView().getModel().getProperty("/idinventory");
+			var oElement,
+					valuesArray = [],
+					formElements = this.getView().getModel().getProperty("/idinventory");
+
 
 			for (var i=0; i<formElements.length; i++) {
+				var value;
 				console.log(formElements[i]);
 
 				oElement = this.getView().byId(formElements[i].id);
+				value = this.getFormElementValue(oElement,formElements[i].type);
+				valuesArray.push({"element":formElements[i].id,"value": value});
 			}
-
-
-
-
-			},
+			console.log(valuesArray);
+		},
 
 		getFormElementValue: function(element, type) {
+			var value;
 
-				switch (type) {
-					case "checkbox":
-						break;
+			switch (type) {
+				case "checkbox":
+					value = element.getSelected();
+					(value) ? value = 1 : value = 0;
+					return value;
 
-					case "select":
-						break;
+					break;
 
-					case "input":
-						break;
+				case "select":
+					value = element.getSelectedItem().getProperty("text");
+					return value;
 
-					case "textbox":
-						break;
+					break;
 
-					default:
-						return null
-				}
+				case "input":
+					value = element.getValue();
+					return value;
+
+					break;
+
+				default:
+					return null
 			}
+		},
+
+		onCleanData: function() {
+			console.log("data cleaned");
+		}
 	});
 
 	return CController;

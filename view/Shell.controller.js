@@ -40,10 +40,14 @@ sap.ui.define([
 		},
 
     onMenuItemSelect : function(ev) {
-						this.byId("mainCont").removeAllContent();
-            this.getRouter().navTo(ev.getParameter("item").getProperty("key"));
 
-            console.log('NavMenu Dialog Item Selected');
+			console.log("Nav to "+ev.getParameter("item").getProperty("key")+" from "+this.getOwnerComponent().getCurrentRoute());
+
+			//getCurrentRoute() is a custom method to get Component.js metadata for the router
+			if (this.getOwnerComponent().getCurrentRoute() != ev.getParameter("item").getProperty("key")) {
+				this.byId("mainCont").removeAllContent();
+	      this.getRouter().navTo(ev.getParameter("item").getProperty("key"));
+			}
 		},
 
     handleNamePress: function (event) {

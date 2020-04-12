@@ -44,14 +44,14 @@
 			<tnt:SideNavigation id="sideNav"
                           itemSelect="onMenuItemSelect">
 
-				<tnt:NavigationList items="{path: '/navMenu'}">
+				<tnt:NavigationList items="{path: '/navMenu', templateShareable:false}">
 
 					<tnt:NavigationListItem text="{text}"
                                   icon="{icon}"
                                   enabled="{enabled}"
                                   visible="{enabled}"
                                   key="{key}"
-                                  items="{items}">
+                                  items="{path: '{items}', templateShareable:false}">
 
 				        <tnt:NavigationListItem text="{text}"
                                         icon="{icon}"
@@ -62,8 +62,21 @@
 				</tnt:NavigationList>
 
 				<tnt:fixedItem>
-					<tnt:NavigationList>
-						<tnt:NavigationListItem text="Soporte" icon="sap-icon://headset"/>
+					<tnt:NavigationList items="{path: '/fixedMenu', templateShareable:false}">
+
+						<tnt:NavigationListItem text="{text}"
+																		icon="{icon}"
+																		enabled="{enabled}"
+																		visible="{enabled}"
+																		key="{key}"
+																		items="{path: '{items}', templateShareable:false}">
+
+									<tnt:NavigationListItem text="{text}"
+																					icon="{icon}"
+																					key="{key}"
+																					visible="{enabled}"/>
+						</tnt:NavigationListItem>
+
 					</tnt:NavigationList>
 				</tnt:fixedItem>
 			</tnt:SideNavigation>
@@ -71,7 +84,7 @@
 		</tnt:sideContent>
 
 		<tnt:mainContents>
-
+<!--
           <ScrollContainer  id="mainCont"
                             horizontal="false"
                             vertical="true"
@@ -79,7 +92,14 @@
 					<content>
 					</content>
           </ScrollContainer>
+-->
 
+					<Page	id="mainCont"
+								showHeader="false"
+								enableScrolling="false">
+								<content>
+								</content>
+					</Page>
 		</tnt:mainContents>
 
 	</tnt:ToolPage>
