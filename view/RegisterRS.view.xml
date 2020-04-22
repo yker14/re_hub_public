@@ -168,27 +168,29 @@
 	 </f:SimpleForm>
 
 	</VBox>
-	<VBox	width="100%">
-	<UploadCollection id="UploadCollection"
-										instantUpload="false"
-										maximumFileSize="2"
-										mode="MultiSelect"
-
-										maximumFilenameLength="55"
-										multiple="true"
-										sameFilenameAllowed="true"
-										noDataDescription="Drop files or use the &quot;+&quot; button for pending upload"
-										change="onChange"
-										fileDeleted="onFileDeleted"
-										filenameLengthExceed="onFilenameLengthExceed"
-										fileSizeExceed="onFileSizeExceed"
-										typeMissmatch="onTypeMissmatch"
-										uploadComplete="onUploadComplete"
-										beforeUploadStarts="onBeforeUploadStarts" >
+	<VBox  width="100%">
+    <UploadCollection   id="uploadcollection"
+                        instantUpload="false"
+                        maximumFileSize="2"
+                        mode="MultiSelect"                        
+                        multiple="true"
+                        noDataDescription="Suelta las imagenes aqui en formato PNG o JPG o usa el boton de &quot;Cargar&quot;"
+                        noDataText="Sin imagenes"
+                        numberOfAttachmentsText="Imagenes (8)"
+                        sameFilenameAllowed="false"
+                        showSeparators="Inner"
+                        uploadEnabled="true"
+                        uploadUrl="./media/images"
+                        change="onChange"
+                        fileDeleted="onFileDeleted"
+                        filenameLengthExceed="onFilenameLengthExceed"
+                        fileSizeExceed="onFileSizeExceed"
+                        typeMissmatch="onTypeMissmatch"
+                        uploadComplete="onUploadComplete"
+                        beforeUploadStarts="onBeforeUploadStarts" >
 
 	</UploadCollection>
-	<Button id="Button" text="Upload Now" press="onStartUpload" />
-</VBox>
+    </VBox>
 </content>
 <footer>
 			<OverflowToolbar id="otbFooter">

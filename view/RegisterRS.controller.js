@@ -11,7 +11,7 @@ sap.ui.define([
 	var CController = Controller.extend(Utils.nameSpaceHandler("controller.RegisterRS"), {
 
     onInit: function () {
-
+            
 			//Setup data for controls
 			//years
 			var yearSince, yearsModel,yearsList;
@@ -23,8 +23,29 @@ sap.ui.define([
 			yearsList.addItem(new sap.ui.core.Item({text:"",key:"0"}));
 			yearsList.setSelectedKey("0");
 
+			//Get and set global model
+			this.oFormModel = new JSONModel();
+			this.oFormModel.loadData(sap.ui.require.toUrl("rshub/ui/model/") + "/RegisterForm.json", null, false);
+			this.getView().setModel(this.oFormModel);
 
+			//Get Geo Information
+			var states = SoSQL.getStates();
+			states.then(function(data){
+                var nData = {"states":data};
 
+                //Set Json Model for the states list
+                var json = new JSONModel();
+                json.setJSON(JSON.stringify(nData))
+
+                var stateList = this.getView().byId("state");
+                stateList.setModel(json);
+                stateList.setSelectedKey("11"); //SELECT BOGOTA AUTOMATICALLY
+                stateList.fireChange(stateList.getSelectedItem());
+			}.bind(this));
+
+            //Setup of Upload Collection
+            this.setUploadCollection();
+        
 /*
 			Promise.all([yearsModel]).then( function (results){
 				for (var i=0; i< results.length; i++){
@@ -36,65 +57,59 @@ sap.ui.define([
 
 			}.bind(this));
 */
-			//Get and set global model
-			this.oFormModel = new JSONModel();
-			this.oFormModel.loadData(sap.ui.require.toUrl("rshub/ui/model/") + "/RegisterForm.json", null, false);
-			this.getView().setModel(this.oFormModel);
 
-			//Get Geo Information
-			var states = SoSQL.getStates();
-			states.then(function(data){
+    },
+        
+    setUploadCollection: function() {
+        var uploadCollection = this.getView().byId("uploadcollection");
+        uploadCollection.setFileType(["jpg", "png"]);
+        //uploadCollection.setUploadUrl("./media/images");
+                                       
+    },
 
-					var nData = {"states":data};
+    onStateChange: function (ev) {
+        //WIPE CITY LIST ITEMS
+        var citiesList = this.getView().byId("cities");
+        citiesList.destroyItems();
 
-					//Set Json Model for the states list
-					var json = new JSONModel();
-					json.setJSON(JSON.stringify(nData))
+        //GET NEW CITIES
+        var key = ev.getSource().getSelectedKey(),
+        cities = SoSQL.getCities(key);
 
-					var stateList = this.getView().byId("state");
-					stateList.setModel(json);
-					stateList.setSelectedKey("11"); //SELECT BOGOTA AUTOMATICALLY
-					stateList.fireChange(stateList.getSelectedItem());
-			}.bind(this));
-		},
+            cities.then(function(data){
 
-		onStateChange: function (ev) {
-			//WIPE CITY LIST ITEMS
-			var citiesList = this.getView().byId("cities");
-			citiesList.destroyItems();
+                var nData = {"cities":data};
 
-			//GET NEW CITIES
-			var key = ev.getSource().getSelectedKey(),
-			cities = SoSQL.getCities(key);
+                //Set Json Model for the view
+                var json = new JSONModel();
+                json.setJSON(JSON.stringify(nData))
 
-				cities.then(function(data){
+                citiesList.setModel(json);
+            }.bind(this));
+    },
 
-					var nData = {"cities":data};
-
-					//Set Json Model for the view
-					var json = new JSONModel();
-					json.setJSON(JSON.stringify(nData))
-
-					citiesList.setModel(json);
-				}.bind(this));
-			},
-
-		onSaveData: function(ev) {
-			var oElement,
-					valuesArray = [],
-					formElements = this.getView().getModel().getProperty("/idinventory");
+	onSaveData: function(ev) {
+        var oElement,
+                valuesArray = [],
+                formElements = this.getView().getModel().getProperty("/idinventory");
 
 
-			for (var i=0; i<formElements.length; i++) {
-				var value;
-				console.log(formElements[i]);
+        for (var i=0; i<formElements.length; i++) {
+            var value;
+            console.log(formElements[i]);
 
-				oElement = this.getView().byId(formElements[i].id);
-				value = this.getFormElementValue(oElement,formElements[i].type);
-				valuesArray.push({"element":formElements[i].id,"value": value});
-			}
-			console.log(valuesArray);
-		},
+            oElement = this.getView().byId(formElements[i].id);
+            value = this.getFormElementValue(oElement,formElements[i].type);
+            valuesArray.push({"element":formElements[i].id,"value": value});
+        }
+        console.log(valuesArray);
+        
+        var oUploadCollection = this.byId("uploadcollection");
+        var cFiles = oUploadCollection.getItems().length;
+        
+         oUploadCollection.upload();
+        
+    },
 
 		getFormElementValue: function(element, type) {
 			var value;
