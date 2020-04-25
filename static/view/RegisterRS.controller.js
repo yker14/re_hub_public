@@ -2,10 +2,12 @@ sap.ui.define([
 	'sap/ui/model/json/JSONModel',
 	'sap/ui/core/mvc/Controller',
 	'sap/m/MessageToast',
-  '../libs/custom/Utilities',
-  'sap/ui/core/Fragment',
-  '../libs/api/SoSQLAPI'
-], function (JSONModel, Controller, MessageToast, Utils, Fragment, SoSQL) {
+	'../libs/custom/Utilities',
+	'sap/ui/core/Fragment',
+	'../libs/api/SoSQLAPI',
+	'../libs/custom/controls/sapmupload/UploadSet'
+
+], function (JSONModel, Controller, MessageToast, Utils, Fragment, SoSQL, UploadSet) {
 	"use strict";
 
 	var CController = Controller.extend(Utils.nameSpaceHandler("controller.RegisterRS"), {
@@ -43,8 +45,6 @@ sap.ui.define([
                 stateList.fireChange(stateList.getSelectedItem());
 			}.bind(this));
 
-            //Setup of Upload Collection
-            this.setUploadCollection();
         
 /*
 			Promise.all([yearsModel]).then( function (results){
@@ -58,13 +58,6 @@ sap.ui.define([
 			}.bind(this));
 */
 
-    },
-        
-    setUploadCollection: function() {
-        var uploadCollection = this.getView().byId("uploadcollection");
-        uploadCollection.setFileType(["jpg", "png"]);
-        //uploadCollection.setUploadUrl("./media/images");
-                                       
     },
 
     onStateChange: function (ev) {
@@ -103,41 +96,35 @@ sap.ui.define([
             valuesArray.push({"element":formElements[i].id,"value": value});
         }
         console.log(valuesArray);
-        
-        var oUploadCollection = this.byId("uploadcollection");
-        var cFiles = oUploadCollection.getItems().length;
-        
-         oUploadCollection.upload();
-        
-    },
+	},
 
-		getFormElementValue: function(element, type) {
-			var value;
+	getFormElementValue: function(element, type) {
+		var value;
 
-			switch (type) {
-				case "checkbox":
-					value = element.getSelected();
-					(value) ? value = 1 : value = 0;
-					return value;
+		switch (type) {
+			case "checkbox":
+				value = element.getSelected();
+				(value) ? value = 1 : value = 0;
+				return value;
 
-					break;
+				break;
 
-				case "select":
-					value = element.getSelectedItem().getProperty("text");
-					return value;
+			case "select":
+				value = element.getSelectedItem().getProperty("text");
+				return value;
 
-					break;
+				break;
 
-				case "input":
-					value = element.getValue();
-					return value;
+			case "input":
+				value = element.getValue();
+				return value;
 
-					break;
+				break;
 
-				default:
-					return null
-			}
-		},
+			default:
+				return null
+		}
+	},
 
 		onCleanData: function() {
 			console.log("data cleaned");

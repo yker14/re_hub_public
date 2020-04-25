@@ -1,32 +1,33 @@
 <mvc:View	xmlns:mvc="sap.ui.core.mvc"
-		  		xmlns="sap.m"
-          xmlns:f="sap.ui.layout.form"
-          xmlns:l="sap.ui.layout"
-		  		xmlns:core="sap.ui.core"
-          controllerName="rshub.ui.view.RegisterRS"
-	        height="100%">
+			xmlns="sap.m"
+			xmlns:up="rshub.ui.libs.custom.controls.sapmupload"
+			xmlns:f="sap.ui.layout.form"
+			xmlns:l="sap.ui.layout"
+			xmlns:core="sap.ui.core"
+			controllerName="rshub.ui.view.RegisterRS"
+			height="100%">
 
 <Page showHeader="false"
 			enableScrolling="true">
 <content>
 <VBox class="sapUiSmallMargin">
 
-	<f:SimpleForm id="form1"
-								editable="true"
-								layout="ResponsiveGridLayout"
-								labelSpanXL="4"
-								labelSpanL="4"
-								labelSpanM="4"
-								labelSpanS="12"
-								adjustLabelSpan="false"
-								emptySpanXL="0"
-								emptySpanL="0"
-								emptySpanM="0"
-								emptySpanS="0"
-								columnsXL="3"
-								columnsL="2"
-								columnsM="2"
-								singleContainerFullSize="false" >
+	<f:SimpleForm 	id="form1"
+					editable="true"
+					layout="ResponsiveGridLayout"
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="3"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" >
 		<f:content>
 			<core:Title text="Ubicacion" />
 
@@ -169,27 +170,16 @@
 
 	</VBox>
 	<VBox  width="100%">
-    <UploadCollection   id="uploadcollection"
-                        instantUpload="false"
-                        maximumFileSize="2"
-                        mode="MultiSelect"                        
-                        multiple="true"
-                        noDataDescription="Suelta las imagenes aqui en formato PNG o JPG o usa el boton de &quot;Cargar&quot;"
-                        noDataText="Sin imagenes"
-                        numberOfAttachmentsText="Imagenes (8)"
-                        sameFilenameAllowed="false"
-                        showSeparators="Inner"
-                        uploadEnabled="true"
-                        uploadUrl="./media/images"
-                        change="onChange"
-                        fileDeleted="onFileDeleted"
-                        filenameLengthExceed="onFilenameLengthExceed"
-                        fileSizeExceed="onFileSizeExceed"
-                        typeMissmatch="onTypeMissmatch"
-                        uploadComplete="onUploadComplete"
-                        beforeUploadStarts="onBeforeUploadStarts" >
+  		<up:UploadSet	id="UploadSet"
+							instantUpload="true"
+							showIcons="true"
+							uploadEnabled="true"
+							fileTypes="jpg,png"
+							mediaTypes="image/png,image/jpeg"
+							uploadUrl="media/images">
+			
+		</up:UploadSet>
 
-	</UploadCollection>
     </VBox>
 </content>
 <footer>

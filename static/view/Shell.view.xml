@@ -21,7 +21,7 @@
 				</Button>
 
                 <Title text="Kassa Solutions"/>
-                <Image src="./media/logo/logo_ui5.png"
+                <Image src="static/media/logo/logo_ui5.png"
                        height="70%"/>
 
 
